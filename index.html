@@ -149,7 +149,7 @@ input:focus-visible+.pill{outline:2px solid #fff;outline-offset:2px}
     <div class="ic" data-i="mail"></div>
     <h2 class="silver font-script text-6xl sm:text-7xl">Confirmá tu asistencia</h2>
     <p class="text-lg">Antes del 14 de noviembre de 2026</p>
-    <form id="f" class="card flex flex-col gap-3 text-left">
+    <form id="f" class="card flex flex-col gap-3 text-left" action="send.php" method="post">
       <div class="grid grid-cols-2 gap-2">
         <label><input class="sr-only" type="radio" name="a" value="Sí asistiré" required><span class="pill">Sí asistiré</span></label>
         <label><input class="sr-only" type="radio" name="a" value="No podré asistir"><span class="pill">No podré asistir</span></label>
@@ -158,6 +158,7 @@ input:focus-visible+.pill{outline:2px solid #fff;outline-offset:2px}
       <label class="text-sm">¿Tenés algún requerimiento alimentario?<input class="fld mt-1" name="r" placeholder="Celíaco, vegetariano, alergias…"></label>
       <label class="text-sm">¿Qué canción no puede faltar?<input class="fld mt-1" name="c"></label>
       <label class="text-sm">Dejá tu mensaje para Alma<textarea class="fld mt-1" name="m" rows="3"></textarea></label>
+      <input type="text" name="website" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button class="btn self-center mt-1" type="submit">Confirmar asistencia</button>
       <p id="st" class="text-sm text-center" role="status"></p>
     </form>
@@ -221,12 +222,21 @@ $('#copy').onclick=async e=>{
 };
 
 /* Confirmación por mail */
-$('#f').onsubmit=e=>{
+const form=$('#f'),st=$('#st'),sendBtn=form.querySelector('button[type="submit"]');
+form.onsubmit=async e=>{
   e.preventDefault();
-  const f=new FormData(e.target),a=f.get('a'),n=f.get('n');
-  const body=[a,'','Nombre y apellido: '+n,'¿Tenés algún requerimiento alimentario?: '+(f.get('r')||'-'),'¿Qué canción no puede faltar?: '+(f.get('c')||'-'),'Mensaje para Alma: '+(f.get('m')||'-')].join('\r\n');
-  $('#st').textContent='Se abrirá tu app de correo. Tocá "Enviar" para terminar la confirmación.';
-  location.href='mailto:fatimabbusto@gmail.com?subject='+encodeURIComponent('XV de Alma - '+a+' - '+n)+'&body='+encodeURIComponent(body);
+  const label=sendBtn.textContent;
+  sendBtn.disabled=true;sendBtn.textContent='Enviando…';st.textContent='';
+  try{
+    const res=await fetch('send.php',{method:'POST',body:new FormData(form)});
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok||!data.ok)throw new Error(data.message||'No pudimos enviar tu confirmación. Intentá nuevamente.');
+    st.textContent=data.message;form.reset();
+  }catch(err){
+    st.textContent=err.message||'No pudimos enviar tu confirmación. Intentá nuevamente.';
+  }finally{
+    sendBtn.disabled=false;sendBtn.textContent=label;
+  }
 };
 </script>
 </body>
