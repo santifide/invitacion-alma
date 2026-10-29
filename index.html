@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#4b2e7a">
+<title>Mis XV · Alma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{script:['"Great Vibes"','cursive'],sans:['Montserrat','system-ui','sans-serif']}}}}</script>
+<style>
+html{scroll-snap-type:y proximity;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:#2d1b4e;font-family:Montserrat,system-ui,sans-serif;font-weight:300;overflow-x:hidden}
+.sec{position:relative;overflow:hidden;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;padding:5rem 1.5rem;scroll-snap-align:start}
+.bg{position:absolute;left:0;right:0;top:-20%;height:140%;will-change:transform}
+.bg>*{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;background-size:cover;background-position:center 25%;opacity:0;transition:opacity 1.6s ease}
+.bg>.on{opacity:1}
+.ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(45,27,78,.62),rgba(95,60,150,.42) 50%,rgba(45,27,78,.72))}
+.box{position:relative;z-index:2;width:100%;max-width:30rem;display:flex;flex-direction:column;align-items:center;gap:1.1rem}
+.silver{background:linear-gradient(180deg,#fff 10%,#d4d7e3 50%,#9a9db3);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 10px rgba(40,10,70,.55));padding:.1em .2em;line-height:1.15}
+.svg{width:1.5rem;height:1.5rem}
+.ic{width:3.5rem;height:3.5rem;border-radius:9999px;border:1px solid #d7d9e4;background:rgba(200,162,232,.2);color:#efe4ff;display:grid;place-items:center;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.ic .svg{width:1.7rem;height:1.7rem}
+.card{background:rgba(255,255,255,.12);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(220,222,235,.45);border-radius:1.25rem;padding:1.1rem 1.25rem;width:100%}
+.btn{display:inline-block;background:linear-gradient(135deg,#eceef5,#b99be0 55%,#d9dbe6);color:#2d1b4e;font-weight:600;border-radius:9999px;padding:.9rem 2rem;font-size:.95rem;border:0;cursor:pointer;box-shadow:0 6px 20px rgba(30,10,60,.35)}
+.btn:focus-visible,#mus:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.fld{width:100%;box-sizing:border-box;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);border-radius:.8rem;padding:.75rem 1rem;color:#fff;font:inherit;font-size:16px;font-weight:400}
+.fld::placeholder{color:rgba(255,255,255,.65)}
+.pill{display:block;text-align:center;padding:.7rem .5rem;border:1px solid rgba(255,255,255,.55);border-radius:9999px;font-size:.9rem;font-weight:400;cursor:pointer}
+input:checked+.pill{background:#fff;color:#3b2366;font-weight:600}
+input:focus-visible+.pill{outline:2px solid #fff;outline-offset:2px}
+.num{font-size:2rem;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+#mus{position:fixed;z-index:50;right:.9rem;top:calc(env(safe-area-inset-top,0px) + .9rem);width:2.75rem;height:2.75rem;border-radius:9999px;border:1px solid #dcdee9;background:rgba(75,46,122,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;display:grid;place-items:center;cursor:pointer}
+#mus .svg{width:1.2rem;height:1.2rem}
+#mus.off{animation:pl 2s infinite}
+#mus.off::after{content:"";position:absolute;width:1.6rem;height:2px;background:#fff;transform:rotate(-45deg)}
+@keyframes pl{0%,100%{box-shadow:0 0 0 0 rgba(200,162,232,.7)}50%{box-shadow:0 0 0 10px rgba(200,162,232,0)}}
+@keyframes fi{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero .box>*{animation:fi 1.2s ease both}.hero .box>:nth-child(2){animation-delay:.2s}.hero .box>:nth-child(3){animation-delay:.4s}.hero .box>:nth-child(4){animation-delay:.6s}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero .box>*,#mus.off{animation:none}}
+</style>
+</head>
+<body>
+
+<button id="mus" class="off" aria-label="Activar o pausar la música" data-i="music"></button>
+<audio id="au" src="music.mp3" loop preload="auto"></audio>
+
+<!-- 1. Portada -->
+<section class="sec hero" id="inicio">
+  <div class="bg"><video class="on" src="video/Alma-Video-Background.webm" poster="images/18-Alma-Grieco-previa.jpg" autoplay muted loop playsinline webkit-playsinline preload="auto"></video></div>
+  <div class="ov"></div>
+  <div class="box">
+    <div class="ic" data-i="crown"></div>
+    <p class="tracking-[.35em] text-sm">Mis XV años</p>
+    <h1 class="silver font-script text-[7rem] sm:text-[10rem]">Alma</h1>
+    <p class="tracking-[.2em] text-sm">Viernes 8 de Enero de 2027</p>
+  </div>
+  <a href="#invitacion" aria-label="Ir a la siguiente sección" class="absolute bottom-5 left-0 right-0 flex justify-center text-white z-10"><span class="animate-bounce" data-i="chev"></span></a>
+</section>
+
+<!-- 2. Invitación -->
+<section class="sec" id="invitacion">
+  <div class="bg" data-imgs="images/54-Alma-Grieco-previa.jpg,images/73-Alma-Grieco-previa.jpg,images/126-Alma-Grieco-previa.jpg"></div>
+  <div class="ov"></div>
+  <div class="box">
+    <div class="ic" data-i="heart"></div>
+    <h2 class="silver font-script text-6xl sm:text-7xl">Te invito</h2>
+    <div class="card">
+      <p class="text-lg leading-relaxed">Los momentos más felices de la vida se vuelven todavía más maravillosos cuando podemos compartirlos con las personas que más queremos.</p>
+      <p class="text-lg leading-relaxed mt-4">Vos sos parte de ellas, y por eso quiero invitarte a festejar conmigo.</p>
+      <p class="font-script text-4xl mt-4 silver">Alma</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Agendá la fecha + contador -->
+<section class="sec" id="fecha">
+  <div class="bg"><video class="on" src="video/Alma-Video-Background.webm" poster="images/134-Alma-Grieco-previa.jpg" autoplay muted loop playsinline webkit-playsinline preload="metadata"></video></div>
+  <div class="ov"></div>
+  <div class="box">
+    <div class="ic" data-i="calendar"></div>
+    <h2 class="silver font-script text-6xl sm:text-7xl">Agendá la fecha</h2>
+    <p class="text-3xl tracking-[.25em] font-normal">08/01/2027</p>
+    <p class="font-script text-5xl silver mt-2">Faltan:</p>
+    <div class="grid grid-cols-4 gap-2 w-full" id="cd" aria-live="off">
+      <div class="card !px-1 !py-3"><div class="num" id="cd-d">--</div><div class="text-xs mt-1">Días</div></div>
+      <div class="card !px-1 !py-3"><div class="num" id="cd-h">--</div><div class="text-xs mt-1">Horas</div></div>
+      <div class="card !px-1 !py-3"><div class="num" id="cd-m">--</div><div class="text-xs mt-1">Minutos</div></div>
+      <div class="card !px-1 !py-3"><div class="num" id="cd-s">--</div><div class="text-xs mt-1">Segundos</div></div>
+    </div>
+    <a class="btn mt-2" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Mis+XV+-+Alma&dates=20270109T000000Z/20270109T070000Z&location=Lua+Eventos,+Espa%C3%B1a+848,+Rosario&details=Te+invito+a+festejar+conmigo">Agregar al calendario</a>
+  </div>
+</section>
+
+<!-- 4. Detalles -->
+<section class="sec" id="detalles">
+  <div class="bg" data-imgs="images/143-Alma-Grieco-previa.jpg,images/161-Alma-Grieco-previa.jpg"></div>
+  <div class="ov"></div>
+  <div class="box">
+    <div class="ic" data-i="gem"></div>
+    <h2 class="silver font-script text-6xl sm:text-7xl">Detalles</h2>
+    <div class="card"><p class="text-sm tracking-widest">Día</p><p class="text-xl font-normal mt-1">Viernes 8 de Enero de 2027</p></div>
+    <div class="card"><p class="text-sm tracking-widest">Hora</p><p class="text-xl font-normal mt-1">De 21 a 04 hs</p></div>
+    <div class="card"><p class="text-sm tracking-widest">Código de vestimenta</p><p class="text-xl font-normal mt-1">Elegante Sport</p></div>
+  </div>
+</section>
+
+<!-- 5. Lugar -->
+<section class="sec" id="lugar">
+  <div class="bg" data-imgs="images/170-Alma-Grieco-previa.jpg"></div>
+  <div class="ov"></div>
+  <div class="box">
+    <div class="ic" data-i="pin"></div>
+    <h2 class="silver font-script text-6xl sm:text-7xl">Lugar</h2>
+    <div><p class="text-xl font-semibold">Lua Eventos</p><p class="text-lg">España 848 - Rosario</p></div>
+    <div class="card !p-1 overflow-hidden" style="height:min(46vh,22rem)">
+      <iframe class="w-full h-full rounded-2xl" title="Mapa de Lua Eventos" src="https://www.google.com/maps/embed?pb=!3m2!1ses-419!2sar!4v1793231370958!5m2!1ses-419!2sar!6m8!1m7!1sSdmwcNlSHCsZQ2BOt5fVQg!2m2!1d-32.94557221283822!2d-60.64665713032058!3f317.40856177415634!4f9.66954529218836!5f0.7820865974627469" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+    <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=-32.94557221283822,-60.64665713032058">Cómo llegar</a>
+  </div>
+</section>
+
+<!-- 6. Regalos -->
+<section class="sec" id="regalos">
+  <div class="bg" data-imgs="images/18-Alma-Grieco-previa.jpg,images/134-Alma-Grieco-previa.jpg"></div>
+  <div class="ov"></div>
+  <div class="box">
+    <div class="ic" data-i="gift"></div>
+    <h2 class="silver font-script text-6xl sm:text-7xl">Regalos</h2>
+    <p class="text-lg leading-relaxed">Nada es más importante que tu presencia, pero si deseas hacerme un presente puedes depositarlo en la siguiente cuenta.</p>
+    <div class="card">
+      <p class="text-sm tracking-widest">Alias</p>
+      <p class="text-3xl font-semibold mt-1" id="alias">almagrieco.</p>
+      <p class="text-sm mt-1">El alias lleva un punto al final.</p>
+      <p class="text-lg font-normal mt-3">Alma Nerea Grieco</p>
+      <p class="text-lg">Mercado Pago</p>
+    </div>
+    <button type="button" class="btn" id="copy">Copiar alias</button>
+  </div>
+</section>
+
+<!-- 7. Confirmar asistencia -->
+<section class="sec" id="confirmar">
+  <div class="bg" data-imgs="images/161-Alma-Grieco-previa.jpg,images/73-Alma-Grieco-previa.jpg"></div>
+  <div class="ov"></div>
+  <div class="box">
+    <div class="ic" data-i="mail"></div>
+    <h2 class="silver font-script text-6xl sm:text-7xl">Confirmá tu asistencia</h2>
+    <p class="text-lg">Antes del 14 de noviembre de 2026</p>
+    <form id="f" class="card flex flex-col gap-3 text-left">
+      <div class="grid grid-cols-2 gap-2">
+        <label><input class="sr-only" type="radio" name="a" value="Sí asistiré" required><span class="pill">Sí asistiré</span></label>
+        <label><input class="sr-only" type="radio" name="a" value="No podré asistir"><span class="pill">No podré asistir</span></label>
+      </div>
+      <label class="text-sm">Nombre y apellido<input class="fld mt-1" name="n" required autocomplete="name"></label>
+      <label class="text-sm">¿Tenés algún requerimiento alimentario?<input class="fld mt-1" name="r" placeholder="Celíaco, vegetariano, alergias…"></label>
+      <label class="text-sm">¿Qué canción no puede faltar?<input class="fld mt-1" name="c"></label>
+      <label class="text-sm">Dejá tu mensaje para Alma<textarea class="fld mt-1" name="m" rows="3"></textarea></label>
+      <button class="btn self-center mt-1" type="submit">Confirmar asistencia</button>
+      <p id="st" class="text-sm text-center" role="status"></p>
+    </form>
+    <p class="text-[11px] text-white/80 mt-6">Realizado por <a class="underline" href="https://www.instagram.com/santiagofidelio/" target="_blank" rel="noopener">Santiago Fidelio</a></p>
+  </div>
+</section>
+
+<script>
+const $=s=>document.querySelector(s);
+const I={
+crown:'<path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zM5 20h14"/>',
+heart:'<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+calendar:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+gem:'<path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6M2 9h20"/>',
+pin:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+gift:'<rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/>',
+mail:'<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
+music:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+chev:'<path d="m6 9 6 6 6-6"/>'};
+document.querySelectorAll('[data-i]').forEach(e=>e.innerHTML='<svg class="svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+I[e.dataset.i]+'</svg>');
+
+/* Sliders de fotos */
+document.querySelectorAll('.bg[data-imgs]').forEach(b=>{
+  const s=b.dataset.imgs.split(',').map(u=>{const d=document.createElement('div');d.style.backgroundImage='url('+u+')';b.append(d);return d});
+  s[0].classList.add('on');
+  if(s.length>1){let i=0;setInterval(()=>{s[i].classList.remove('on');i=(i+1)%s.length;s[i].classList.add('on')},5000+Math.random()*1500)}
+});
+
+/* Parallax (por transform: funciona en iPhone y Android) */
+const bgs=[...document.querySelectorAll('.bg')];
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
+  const par=()=>{const h=innerHeight;bgs.forEach(b=>{const r=b.parentElement.getBoundingClientRect();if(r.bottom<0||r.top>h)return;b.style.transform='translate3d(0,'+(-(r.top+r.height/2-h/2)*.18)+'px,0)'})};
+  let t=0;addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(()=>{t=0;par()})},{passive:true});addEventListener('resize',par);par();
+}
+
+/* Videos: solo reproducen cuando están a la vista */
+const vo=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting?e.target.play().catch(()=>{}):e.target.pause()),{threshold:.1});
+document.querySelectorAll('video').forEach(v=>vo.observe(v));
+
+/* Contador (hora Argentina, UTC-3) */
+const T=new Date('2027-01-08T21:00:00-03:00');
+function tick(){
+  let d=Math.max(0,T-new Date());
+  const v=[d/864e5,d/36e5%24,d/6e4%60,d/1e3%60];
+  ['d','h','m','s'].forEach((k,i)=>$('#cd-'+k).textContent=String(Math.floor(v[i])).padStart(2,'0'));
+}
+tick();setInterval(tick,1000);
+
+/* Música: el navegador exige un toque del usuario para iniciar el audio */
+const au=$('#au'),mb=$('#mus');au.volume=.6;
+const setM=on=>mb.classList.toggle('off',!on);
+mb.addEventListener('click',e=>{e.stopPropagation();au.paused?au.play().then(()=>setM(1)).catch(()=>{}):(au.pause(),setM(0))});
+function first(){au.play().then(()=>{setM(1);['touchend','click'].forEach(ev=>removeEventListener(ev,first))}).catch(()=>{})}
+['touchend','click'].forEach(ev=>addEventListener(ev,first));
+
+/* Copiar alias (incluye el punto final) */
+$('#copy').onclick=async e=>{
+  const b=e.target,t='almagrieco.';
+  try{await navigator.clipboard.writeText(t)}catch(_){const x=document.createElement('textarea');x.value=t;document.body.append(x);x.select();document.execCommand('copy');x.remove()}
+  b.textContent='¡Alias copiado!';setTimeout(()=>b.textContent='Copiar alias',2000);
+};
+
+/* Confirmación por mail */
+$('#f').onsubmit=e=>{
+  e.preventDefault();
+  const f=new FormData(e.target),a=f.get('a'),n=f.get('n');
+  const body=[a,'','Nombre y apellido: '+n,'¿Tenés algún requerimiento alimentario?: '+(f.get('r')||'-'),'¿Qué canción no puede faltar?: '+(f.get('c')||'-'),'Mensaje para Alma: '+(f.get('m')||'-')].join('\r\n');
+  $('#st').textContent='Se abrirá tu app de correo. Tocá "Enviar" para terminar la confirmación.';
+  location.href='mailto:fatimabbusto@gmail.com?subject='+encodeURIComponent('XV de Alma - '+a+' - '+n)+'&body='+encodeURIComponent(body);
+};
+</script>
+</body>
+</html>
